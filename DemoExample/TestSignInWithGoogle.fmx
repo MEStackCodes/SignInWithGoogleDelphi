@@ -1,0 +1,182 @@
+object FTestGoogleSignIn: TFTestGoogleSignIn
+  Left = 0
+  Top = 0
+  BorderStyle = Single
+  ClientHeight = 574
+  ClientWidth = 400
+  Fill.Color = claWhitesmoke
+  Fill.Kind = Solid
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  OnShow = FormShow
+  DesignerMasterStyle = 3
+  object mLog: TMemo
+    Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
+    DataDetectorTypes = []
+    ReadOnly = True
+    StyledSettings = [Family, Style, FontColor]
+    TextSettings.Font.Size = 11.000000000000000000
+    TextSettings.WordWrap = True
+    Align = Top
+    Margins.Left = 25.000000000000000000
+    Margins.Right = 25.000000000000000000
+    Position.X = 25.000000000000000000
+    Position.Y = 29.000000000000000000
+    Size.Width = 350.000000000000000000
+    Size.Height = 128.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 0
+    Viewport.Width = 342.000000000000000000
+    Viewport.Height = 120.000000000000000000
+  end
+  object Text1: TText
+    Align = Top
+    Size.Width = 400.000000000000000000
+    Size.Height = 29.000000000000000000
+    Size.PlatformDefault = False
+    Text = 'Sign In With Google Log:'
+    TextSettings.Font.Size = 18.000000000000000000
+    TextSettings.Font.StyleExt = {00070000000000000004000000}
+  end
+  object Layout1: TLayout
+    Align = Bottom
+    Margins.Bottom = 20.000000000000000000
+    Position.Y = 428.000000000000000000
+    Size.Width = 400.000000000000000000
+    Size.Height = 43.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 3
+    object bSignIn: TButton
+      Align = Center
+      Size.Width = 347.000000000000000000
+      Size.Height = 44.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 0
+      Text = 'Test Sign In '
+      TextSettings.Trimming = None
+      OnClick = bSignInClick
+    end
+  end
+  object Layout2: TLayout
+    Align = Top
+    Margins.Left = 25.000000000000000000
+    Margins.Top = 30.000000000000000000
+    Margins.Right = 25.000000000000000000
+    Position.X = 25.000000000000000000
+    Position.Y = 187.000000000000000000
+    Size.Width = 350.000000000000000000
+    Size.Height = 82.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 5
+    object SGBottomSheet: TRadioButton
+      Align = Right
+      Position.X = 176.000000000000000000
+      Position.Y = 23.000000000000000000
+      Size.Width = 174.000000000000000000
+      Size.Height = 59.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 0
+      Text = 'BottomSheet Form'
+    end
+    object SGModal: TRadioButton
+      Align = Left
+      IsChecked = True
+      Position.Y = 23.000000000000000000
+      Size.Width = 151.000000000000000000
+      Size.Height = 59.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 1
+      Text = 'Modal UI'
+    end
+    object Rectangle1: TRectangle
+      Align = Top
+      HitTest = False
+      Size.Width = 350.000000000000000000
+      Size.Height = 23.000000000000000000
+      Size.PlatformDefault = False
+      Stroke.Kind = None
+      object Text2: TText
+        Align = Top
+        HitTest = False
+        Margins.Bottom = 30.000000000000000000
+        Size.Width = 350.000000000000000000
+        Size.Height = 25.000000000000000000
+        Size.PlatformDefault = False
+        Text = 'Google UI'
+        TextSettings.Font.Size = 14.000000000000000000
+        TextSettings.Font.StyleExt = {00060000000000000004000000}
+        TextSettings.FontColor = xFF626262
+      end
+    end
+  end
+  object Layout3: TLayout
+    Align = Top
+    Margins.Left = 25.000000000000000000
+    Margins.Top = 20.000000000000000000
+    Margins.Right = 25.000000000000000000
+    Position.X = 25.000000000000000000
+    Position.Y = 289.000000000000000000
+    Size.Width = 350.000000000000000000
+    Size.Height = 130.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 4
+    object Rectangle2: TRectangle
+      Align = Top
+      HitTest = False
+      Size.Width = 350.000000000000000000
+      Size.Height = 23.000000000000000000
+      Size.PlatformDefault = False
+      Stroke.Kind = None
+      object Text3: TText
+        Align = Top
+        HitTest = False
+        Margins.Bottom = 30.000000000000000000
+        Size.Width = 350.000000000000000000
+        Size.Height = 25.000000000000000000
+        Size.PlatformDefault = False
+        Text = 'BottomSheet Options'
+        TextSettings.Font.Size = 14.000000000000000000
+        TextSettings.Font.StyleExt = {00060000000000000004000000}
+        TextSettings.FontColor = xFF626262
+      end
+    end
+    object SGSetFilterAuthorizedAccounts: TCheckBox
+      Align = Top
+      Position.Y = 23.000000000000000000
+      Size.Width = 350.000000000000000000
+      Size.Height = 59.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 0
+      Text = 'SetFilterAuthorizedAccounts'
+    end
+    object SGSetAutoSelectEnabled: TCheckBox
+      Align = Top
+      Position.Y = 82.000000000000000000
+      Size.Width = 350.000000000000000000
+      Size.Height = 33.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 1
+      Text = 'SetAutoSelectEnabled'
+    end
+  end
+  object Layout4: TLayout
+    Align = Bottom
+    Margins.Bottom = 40.000000000000000000
+    Position.Y = 491.000000000000000000
+    Size.Width = 400.000000000000000000
+    Size.Height = 43.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 2
+    object bClear: TButton
+      Align = Center
+      Size.Width = 347.000000000000000000
+      Size.Height = 44.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 0
+      Text = 'Clear Credential State'
+      TextSettings.Trimming = None
+      OnClick = bClearClick
+    end
+  end
+end
