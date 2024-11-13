@@ -1,6 +1,6 @@
 ![Platform](https://img.shields.io/badge/Android-3DDC84?style=flat-square&logo=android&logoColor=white)
 ![Delphi](https://img.shields.io/badge/Delphi%2012.x-CC342D?style=flat-square&logo=delphi&logoColor=white)
-[![GitHub Tag](https://img.shields.io/github/v/tag/MEStackCodes/SignInWithGoogleDelphi?style=flat-square&labelColor=black&color=b60926)](https://github.com/MEStackCodes/SignInWithGoogleDelphi/tags)
+[![GitHub Tag](https://img.shields.io/github/v/tag/MEStackCodes/SignInWithGoogleDelphi?style=flat-square&labelColor=black&color=2900c0)](https://github.com/MEStackCodes/SignInWithGoogleDelphi/tags)
 # Google Sign-In with Credential Manager for Delphi/FMX/Android
 
 **TSignInWithGoogle** is a straightforward library/component that enables Google Sign-in using Android's Credential Manager in a Object Pascal/Delphi environment. It can be used freely in any project.
