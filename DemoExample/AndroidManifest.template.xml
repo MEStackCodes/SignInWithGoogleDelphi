@@ -39,33 +39,24 @@
 
             <meta-data android:name="photopicker_activity:0:required" android:value="" />             
         </service>           
-                     
-          <service
-            android:name="androidx.credentials.playservices.CredentialProviderService"
+                                       
+        <!-- Metadata holder service for the purpose of defining the class that implements the credential provider -->
+           <service android:name="androidx.credentials.playservices.CredentialProviderMetadataHolder"
             android:enabled="true"
-            android:exported="true"
-            android:label="My Credential Provider"
-            android:icon="@drawable/ic_launcher"         
-            android:permission="android.permission.BIND_CREDENTIAL_PROVIDER_SERVICE">
-	      <intent-filter>
-		<action android:name="android.service.credentials.CredentialProviderService"/>
-              </intent-filter>
-            <meta-data android:name="android.credentials.provider" android:resource="@xml/provider_credential"/>
-          </service> 
-          
-           <service android:name="androidx.credentials.playservices.CredentialProviderMetadataHolder">
+            android:exported="false">                     
            <meta-data
              android:name="androidx.credentials.CREDENTIAL_PROVIDER_KEY"
              android:value="androidx.credentials.playservices.CredentialProviderPlayServicesImpl" />
            </service>
            
+         <!-- Activity to launch framework UI to display the Credential Manager -->
+         <!-- SignInUITheme contains some settings to avoid problems that prevent correct display in the FMX application.-->
          <activity
             android:name="androidx.credentials.playservices.HiddenActivity"
-            android:configChanges="orientation|keyboard|keyboardHidden|screenSize|screenLayout"
+            android:configChanges="orientation|keyboardHidden|screenSize|screenLayout"
             android:enabled="true"
-            android:exported="true"
-            android:resizeableActivity="true"
-            android:supportsPictureInPicture="true"
+            android:exported="false"
+            android:resizeableActivity="true"          
             android:theme="@style/SignInUITheme"
             android:fitsSystemWindows="true">            
         </activity>
