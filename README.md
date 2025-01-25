@@ -1,16 +1,15 @@
 ![Platform](https://img.shields.io/badge/Android-3DDC84?style=flat-square&logo=android&logoColor=white)
 ![Delphi](https://img.shields.io/badge/Delphi%2012.x-CC342D?style=flat-square&logo=delphi&logoColor=white)
-[![GitHub Tag](https://img.shields.io/github/v/tag/MEStackCodes/SignInWithGoogleDelphi?style=flat-square&labelColor=black&color=b60926)](https://github.com/MEStackCodes/SignInWithGoogleDelphi/tags)
-# Google Sign-In with Credentials Manager for Delphi/FMX/Android
 
-**TSignInWithGoogle** is a straightforward library/component that enables Google Sign-in using Android's Credential Manager in a Object Pascal/Delphi environment. It can be used freely in any project.
+# Google Sign-In with Credential Manager for Delphi/FMX/Android
 
+**TSignInWithGoogle** is a straightforward library/component that enables Google Sign-in using Android's Credential Manager in a Object Pascal/Delphi environment, adhering to Google's most recent guide﻿lines.﻿ 
  
 ## Requirements
 
 - `Delphi Athens +12x`
 - `Binary (JAR/AAR) Dependencies`
-- `Android SDK 33/34`
+- `Android SDK API Level +33`
 - `Set up your Google Identity APIs console project` - [API Console](https://console.cloud.google.com/apis) 
 
 ## Installing
@@ -37,7 +36,7 @@
     SignInWithGoogle := TSignInWithGoogle.Create(Self);
       with SignInWithGoogle do
        begin
-        SetGoogleClientID('YourClientID');  // <--- your client id here  
+        SetGoogleClientID('xxxxxxxxx-xxxxxx.apps.googleusercontent.com');  // <--- your client id here  
         OnClearStateCredentialSuccessfully:= Self.OnClearStateCredentialSuccessfully;
         OnClearStateCredentialException := Self.OnClearStateCredentialException;      
         OnSignInException := Self.OnSignInException;
@@ -111,26 +110,28 @@
 
 ## AndroidManifest.template.xml
 
-Make sure this line identifying the Google Play service is present in your manifest. Delphi only adds this line if you have notifications, maps, or any other component that uses Google services turned on.
+Make sure this line identifying the Google Play service is present in your manifest. Delphi does not always add this metadata tag. 
 ```xml
 <meta-data android:name="com.google.android.gms.version" android:value="12451000" />
  ```
 
-Just below the `<%uses-libraries%>` tag add this block to activate the Credential Provider Meta Service:
+Just below the `<%uses-libraries%>` add this tag block to activate the Credential Provider Meta Service:
 ```xml
 <%uses-libraries%>
- <service android:name="androidx.credentials.playservices.CredentialProviderMetadataHolder">
- <meta-data
+ <service android:name="androidx.credentials.playservices.CredentialProviderMetadataHolder"
+  android:enabled="true"
+  android:exported="false">
+ <meta-data  
   android:name="androidx.credentials.CREDENTIAL_PROVIDER_KEY"
-  android:value="androidx.credentials.playservices.CredentialProviderPlayServicesImpl" />
-</service>
+  android:value="androidx.credentials.playservices.CredentialProviderPlayServicesImpl"/>
+ </service>
 ```
 
-Also below the above block another block should be added to start the Google UI activity.
+Also below the above block another tag block should be added to start the Google UI activity.
 ```xml
  <activity
   android:name="androidx.credentials.playservices.HiddenActivity"
-  android:configChanges="orientation|keyboard|keyboardHidden|screenSize|screenLayout"
+  android:configChanges="orientation|keyboardHidden|screenSize|screenLayout"
   android:enabled="true"
   android:exported="false"
   android:resizeableActivity="true"            
@@ -139,7 +140,7 @@ Also below the above block another block should be added to start the Google UI 
   </activity>
 ```
 
-The following blocks can be bypassed by placing `android:theme="@style/SignInUITheme"` --> `android:theme="@null"` but you may experience visual issues and window scrolling when launching the Google UI in your app on FMX. 
+The following tag blocks can be bypassed by placing `android:theme="@style/SignInUITheme"` --> `android:theme="@null"` but you may experience visual issues and window scrolling when launching the Google UI in your app on FMX. 
 
 From `Project-> Deployment` you can manage the location of these files for Debug and Release.
 
