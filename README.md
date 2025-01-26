@@ -3,7 +3,11 @@
 
 # Google Sign-In with Credential Manager for Delphi/FMX/Android
 
-**TSignInWithGoogle** is a straightforward library/component that enables Google Sign-in using Android's Credential Manager in a Object Pascal/Delphi environment, adhering to Google's most recent guide﻿lines.﻿ 
+**TSignInWithGoogle** is a straightforward library/component that enables Google Sign-in using Android's Credential Manager in a Object Pascal/Delphi environment, adhering to Google's most recent guidelines.
+
+<img src="./Resources/imagedemo.png" width="100%" alt="SignIn Demo">
+<br>
+<br>
  
 ## Requirements
 
@@ -36,7 +40,7 @@
     SignInWithGoogle := TSignInWithGoogle.Create(Self);
       with SignInWithGoogle do
        begin
-        SetGoogleClientID('xxxxxxxxx-xxxxxx.apps.googleusercontent.com');  // <--- your client id here  
+        SetGoogleClientID('xxxxxxxxx-xxxxxx.apps.googleusercontent.com');  
         OnClearStateCredentialSuccessfully:= Self.OnClearStateCredentialSuccessfully;
         OnClearStateCredentialException := Self.OnClearStateCredentialException;      
         OnSignInException := Self.OnSignInException;
