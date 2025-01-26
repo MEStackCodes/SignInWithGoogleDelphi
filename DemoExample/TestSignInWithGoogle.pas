@@ -5,29 +5,44 @@ interface
 uses
   System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
   FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs, SignInWithGoogle, FMX.Controls.Presentation,
-  FMX.StdCtrls, FMX.Memo.Types, FMX.Objects, FMX.ScrollBox, FMX.Memo, FMX.Layouts;
+  FMX.StdCtrls, FMX.Memo.Types, FMX.Objects, FMX.ScrollBox, FMX.Memo, FMX.Layouts, FMX.TabControl, FMX.Effects;
 
 type
   TFTestGoogleSignIn = class(TForm)
-    bSignIn: TButton;
+    bSignInWithGoogle: TButton;
     mLog: TMemo;
-    Text1: TText;
-    Layout1: TLayout;
-    Layout2: TLayout;
+    Title: TText;
+    ButtonSignInContainer: TLayout;
+    LGoogleUIGroup: TLayout;
     SGBottomSheet: TRadioButton;
     SGModal: TRadioButton;
     Text2: TText;
-    Rectangle1: TRectangle;
-    Layout3: TLayout;
-    Rectangle2: TRectangle;
-    Text3: TText;
+    LButtonSheetOptions: TLayout;
     SGSetFilterAuthorizedAccounts: TCheckBox;
     SGSetAutoSelectEnabled: TCheckBox;
-    Layout4: TLayout;
-    bClear: TButton;
+    ButtonClearContainer: TLayout;
+    MainStyle: TStyleBook;
+    TabControl: TTabControl;
+    TabDemo: TTabItem;
+    TabSetting: TTabItem;
+    LMainContainer: TLayout;
+    Text1: TText;
+    Image1: TImage;
+    bClearCredential: TText;
+    GlowEffect8: TGlowEffect;
+    LSettingsContainer: TLayout;
+    Title1: TLayout;
+    Rectangle1: TRectangle;
+    Title2: TLayout;
+    Rectangle2: TRectangle;
+    Text3: TText;
+    Rectangle3: TRectangle;
+    Rectangle4: TRectangle;
+    VertScrollBox1: TVertScrollBox;
+    VertScrollBox2: TVertScrollBox;
     procedure FormShow(Sender: TObject);
-    procedure bSignInClick(Sender: TObject);
-    procedure bClearClick(Sender: TObject);
+    procedure bSignInWithGoogleClick(Sender: TObject);
+    procedure bClearCredentialClick(Sender: TObject);
   private
 
   public
@@ -52,7 +67,7 @@ begin
   //
 end;
 
-procedure TFTestGoogleSignIn.bClearClick(Sender: TObject);
+procedure TFTestGoogleSignIn.bClearCredentialClick(Sender: TObject);
 begin
   if (not Assigned(SignInWithGoogle)) then
   begin
@@ -69,7 +84,7 @@ begin
 
 end;
 
-procedure TFTestGoogleSignIn.bSignInClick(Sender: TObject);
+procedure TFTestGoogleSignIn.bSignInWithGoogleClick(Sender: TObject);
 begin
   if (not Assigned(SignInWithGoogle)) then
   begin
@@ -119,6 +134,8 @@ begin
       mLog.Lines.Add('Exception Status: Exception when generating the Nonce');
   end;
 
+  mLog.ScrollTo(0, mLog.ViewportPosition.Y + mLog.Height, True);
+
 end;
 
 procedure TFTestGoogleSignIn.OnSignInSuccessfully(Sender: TObject; Result: TSignInWithGoogleResult);
@@ -132,12 +149,16 @@ begin
   mLog.Lines.Add('Last Name:' + Result.FamilyName);
   mLog.Lines.Add('Phone:' + Result.PhoneNumber);
   mLog.Lines.Add('ProfileImg:' + Result.GoogleProfilePictureUri);
+
+  mLog.ScrollTo(0, mLog.ViewportPosition.Y + mLog.Height, True);
 end;
 
 procedure TFTestGoogleSignIn.OnClearStateCredentialSuccessfully(Sender: TObject);
 begin
   mLog.Lines.Add('Clear State Successfully');
   mLog.Lines.Add('====================');
+
+  mLog.ScrollTo(0, mLog.ViewportPosition.Y + mLog.Height, True);
 end;
 
 procedure TFTestGoogleSignIn.OnClearStateCredentialException(Sender: TObject; Error: Exception);
@@ -145,6 +166,8 @@ begin
   mLog.Lines.Add('Clear State Exception');
   mLog.Lines.Add('====================');
   mLog.Lines.Add('Failed: ' + Error.Message);
+
+  mLog.ScrollTo(0, mLog.ViewportPosition.Y + mLog.Height, True);
 end;
 
 end.
